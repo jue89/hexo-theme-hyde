@@ -1,0 +1,26 @@
+<div class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <h1>
+        <a href="<%- config.root %>">
+          <%= config.title %>
+        </a>
+      </h1>
+      <% if (config.description) { %>
+        <%- markdown(config.description) %>
+      <% } %>
+    </div>
+
+    <nav class="sidebar-nav">
+      <% for (var i in config.nav) { %>
+        <% if (path.substr(0, theme.nav[i].length) === theme.nav[i]) { %>
+          <a class="sidebar-nav-item active" href="<%- url_for(theme.nav[i]) %>"><%= i %></a>
+        <% } else { %>
+          <a class="sidebar-nav-item" href="<%- url_for(theme.nav[i]) %>"><%= i %></a>
+        <% } %>
+      <% } %>
+    </nav>
+
+    <p>&copy; <%= new Date().getFullYear() %> <%= config.author || config.title %></p>
+  </div>
+</div>
