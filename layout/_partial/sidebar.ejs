@@ -9,6 +9,21 @@
       <% if (config.description) { %>
         <%- markdown(config.description) %>
       <% } %>
+      <% if (config.social_links) { %>
+        <p>
+          <% for (var link in config.social_links) { %>
+            <% if (link == 'mail') { %>
+              <a class="icon" target="_blank" href="<%- url_for(config.social_links[link]) %>">
+                <i class="fas fa-envelope"></i><!--
+          ---></a><!--
+          ---><% } else { %>
+              <a class="icon" target="_blank" href="<%- url_for(config.social_links[link]) %>">
+                <i class="fab fa-<%= link %>"></i><!--
+          ---></a><!--
+        ---><% } %>
+        <% } %>
+        </p>
+      <% } %>
     </div>
 
     <nav class="sidebar-nav">
